@@ -28,27 +28,27 @@ function getUserChoice() {
     return userChoice;
 }
 
-function playRound(userItem, computerItem) {
-    userItem = userItem.toLowerCase();
-    if (userItem == computerItem) {
+function playRound(userChoice, computerChoice) {
+    userChoice = userChoice.toLowerCase();
+    if (userChoice == computerChoice) {
         console.log("It's a tie!")
     }
     else {
-
-    if (userItem == "rock" && computerItem == "paper" || userItem == "paper" && computerItem == "scissors" || userItem == "scissors" && computerItem == "rock") {
-        console.log(`You lose! ${computerItem} beats ${userItem}!`);
+    if (userChoice == "rock" && computerChoice == "paper" 
+        || userChoice == "paper" && computerChoice == "scissors" 
+        || userChoice == "scissors" && computerChoice == "rock") {
+        console.log(`You lose! ${computerChoice} beats ${userChoice}!`);
         computerScore +=1;
     } else {
-        console.log(`You win! ${userItem} beats ${computerItem}!`);
+        console.log(`You win! ${userChoice} beats ${computerChoice}!`);
         userScore += 1;
     }
-
     }
 
 }
 
 function playGame(imax) {
-    // define number of rounds. for the imax ronds:
+    // define number of rounds. for imax rounds perform:
     for (let i = 0; i < imax; i++) {
         const userSelection = getUserChoice();
         const computerSelection = getComputerChoice();
