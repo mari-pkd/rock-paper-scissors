@@ -1,2 +1,2 @@
 # rock-paper-scissors
-JavaScript training project for TOP course.
+JavaScript training project for TOP course
