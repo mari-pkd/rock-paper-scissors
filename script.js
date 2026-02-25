@@ -1,10 +1,13 @@
-//create a variable for user input
+//base variables
 let userChoice = "";
-//create a variable for computer choice
 let computerChoice = "";
-//create score variables
 let userScore = 0;
 let computerScore = 0;
+
+//UI variables
+const buttons = document.querySelector(".button-container");
+const userScoreDisplay = document.querySelector(".user-score");
+const computerScoreDisplay = document.querySelector(".computer-score");
 
 function getComputerChoice() {
     choice = Math.floor(Math.random() * 3) + 1;
@@ -22,14 +25,7 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-function getUserChoice() {
-    userChoice = prompt("Choose Rock, Paper or Scissors: ");
-    console.log(userChoice)
-    return userChoice;
-}
-
 function playRound(userChoice, computerChoice) {
-    userChoice = userChoice.toLowerCase();
     if (userChoice == computerChoice) {
         console.log("It's a tie!")
     }
@@ -47,7 +43,30 @@ function playRound(userChoice, computerChoice) {
 
 }
 
-function playGame(imax) {
+buttons.addEventListener("click", (event) => {
+    let target = event.target;
+
+    switch (target.id) {
+        case "rock":
+            userChoice = "rock";
+            break;
+        case "paper":
+            userChoice = "paper";
+            break;
+        case "scissors":
+            userChoice = "scissors";
+    }
+    
+    computerChoice = getComputerChoice();
+    console.log(userChoice, computerChoice);
+    playRound(userChoice, computerChoice);
+    userScoreDisplay.textContent = userScore;
+    computerScoreDisplay.textContent = computerScore;
+})
+
+
+
+/* function playGame(imax) {
     // define number of rounds. for imax rounds perform:
     for (let i = 0; i < imax; i++) {
         const userSelection = getUserChoice();
@@ -67,7 +86,7 @@ function playGame(imax) {
 }
 
 playGame(5);
-
+*/
 
 
 
