@@ -6,6 +6,7 @@ let computerScore = 0;
 
 //UI variables
 const buttons = document.querySelector(".button-container");
+const log = document.querySelector(".log");
 const userScoreDisplay = document.querySelector(".user-score");
 const computerScoreDisplay = document.querySelector(".computer-score");
 
@@ -25,22 +26,45 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+function scoreDisplay() {
+    userScoreDisplay.textContent = userScore;
+    computerScoreDisplay.textContent = computerScore;
+}
+
 function playRound(userChoice, computerChoice) {
     if (userChoice == computerChoice) {
-        console.log("It's a tie!")
+        log.textContent = "It's a tie!";
     }
     else {
     if (userChoice == "rock" && computerChoice == "paper" 
         || userChoice == "paper" && computerChoice == "scissors" 
         || userChoice == "scissors" && computerChoice == "rock") {
-        console.log(`You lose! ${computerChoice} beats ${userChoice}!`);
+        log.textContent = `You lose! ${computerChoice} beats ${userChoice}!`;
         computerScore +=1;
     } else {
-        console.log(`You win! ${userChoice} beats ${computerChoice}!`);
+        log.textContent = `You win! ${userChoice} beats ${computerChoice}!`;
         userScore += 1;
     }
     }
+    if (userScore == 5 || computerScore == 5) {
+        if (userScore == 5) alert("You won 5 rounds!");
+        if (computerScore == 5) alert("You lost 5 rounds...");
+        log.textContent = "Endgame!";
+        scoreDisplay();
 
+        const reset = document.createElement("button");
+        reset.textContent = "Reset game";
+        log.appendChild(reset);
+
+        reset.addEventListener("click", () => {
+            log.textContent = "";
+            userScore = 0;
+            computerScore = 0;
+            scoreDisplay();
+            reset.remove();
+        })
+
+    }
 }
 
 buttons.addEventListener("click", (event) => {
@@ -60,8 +84,8 @@ buttons.addEventListener("click", (event) => {
     computerChoice = getComputerChoice();
     console.log(userChoice, computerChoice);
     playRound(userChoice, computerChoice);
-    userScoreDisplay.textContent = userScore;
-    computerScoreDisplay.textContent = computerScore;
+    scoreDisplay();
+    
 })
 
 
