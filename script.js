@@ -90,27 +90,3 @@ buttons.addEventListener("click", (event) => {
 
 
 
-/* function playGame(imax) {
-    // define number of rounds. for imax rounds perform:
-    for (let i = 0; i < imax; i++) {
-        const userSelection = getUserChoice();
-        const computerSelection = getComputerChoice();
-        console.log(userSelection, computerSelection);
-        playRound(userSelection, computerSelection);
-        console.log(userScore, computerScore);
-    }
-    // after game ends, count score:
-    if (userScore > computerScore) {
-        console.log(`You win with a score of ${userScore}!`);
-    } else if (userScore == computerScore) {
-        console.log("It's a tie!");
-    } else {
-        console.log("You lose...");
-    }
-}
-
-playGame(5);
-*/
-
-
-
